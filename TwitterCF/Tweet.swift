@@ -12,10 +12,16 @@ class Tweet {
     
     let text: String
     let id: String
+    let favorites: Int
+    let username: String
+    let profileImageURL: String
     
-    init(text: String, id: String) {
+    init(text: String, id: String, favorites: Int, username: String, profileImageURL: String) {
         self.text = text
         self.id = id
+        self.favorites = favorites
+        self.username = username
+        self.profileImageURL = profileImageURL
     }
     
 }

@@ -19,9 +19,12 @@ class TweetJSONParser {
                 var tweets = [Tweet]()
             
                 for tweetObject in rootObject {
-                    if let text = tweetObject["text"] as? String, id = tweetObject ["id_str"] as? String {
-                        let tweet = Tweet(text: text, id: id)
-                        tweets.append(tweet)
+                    if let text = tweetObject["text"] as? String, id = tweetObject["id_str"] as? String, userDictionary = tweetObject["user"] {
+                        if let favorites = userDictionary["favourites_count"] as? Int {
+                            let tweet = Tweet(text: text, id: id, favorites: favorites, username: "Hello", profileImageURL: "Hello")
+                            tweets.append(tweet)
+                        }
+
                     }
                 }
                 return tweets
