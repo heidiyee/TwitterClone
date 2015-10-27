@@ -2,12 +2,21 @@
 
 import UIKit
 
-var someNames = ["Fred", "Casper", "Bob"]
+var someNames = ["Fred", "Casper", "Bob", "Jim"]
 
-someNames = someNames.reverse()
+func reverseArray(var array: [AnyObject]) -> [AnyObject] {
+    
+    var newArray = [AnyObject]()
+    
+    for _ in array {
+        newArray.append(array.removeLast())
+    }
+    
+    return newArray
+    
+}
 
-print(someNames)
 
-
+reverseArray(someNames)
 
 
