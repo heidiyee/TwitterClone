@@ -18,6 +18,8 @@
 		B773F9E91BDEC2F2001B7618 /* TweetJSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773F9E81BDEC2F2001B7618 /* TweetJSONParser.swift */; };
 		B773F9ED1BDED4C5001B7618 /* tweet.json in Resources */ = {isa = PBXBuildFile; fileRef = B773F9EC1BDED4C5001B7618 /* tweet.json */; };
 		B773F9EF1BE012A4001B7618 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773F9EE1BE012A4001B7618 /* User.swift */; };
+		B773F9F21BE07D5F001B7618 /* AccessTwitterAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773F9F11BE07D5F001B7618 /* AccessTwitterAccount.swift */; };
+		B7B012B91BE1264F00EE7EB3 /* TwitterTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B012B81BE1264F00EE7EB3 /* TwitterTimeline.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		B773F9E81BDEC2F2001B7618 /* TweetJSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetJSONParser.swift; sourceTree = "<group>"; };
 		B773F9EC1BDED4C5001B7618 /* tweet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = tweet.json; path = ../tweet.json; sourceTree = "<group>"; };
 		B773F9EE1BE012A4001B7618 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B773F9F11BE07D5F001B7618 /* AccessTwitterAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTwitterAccount.swift; sourceTree = "<group>"; };
+		B7B012B81BE1264F00EE7EB3 /* TwitterTimeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterTimeline.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,8 @@
 				B773F9E61BDEC224001B7618 /* Tweet.swift */,
 				B773F9EE1BE012A4001B7618 /* User.swift */,
 				B773F9E81BDEC2F2001B7618 /* TweetJSONParser.swift */,
+				B773F9F11BE07D5F001B7618 /* AccessTwitterAccount.swift */,
+				B7B012B81BE1264F00EE7EB3 /* TwitterTimeline.swift */,
 				B773F9BC1BDEBF26001B7618 /* Main.storyboard */,
 				B773F9BF1BDEBF26001B7618 /* Assets.xcassets */,
 				B773F9C11BDEBF26001B7618 /* LaunchScreen.storyboard */,
@@ -279,7 +285,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B773F9E91BDEC2F2001B7618 /* TweetJSONParser.swift in Sources */,
+				B773F9F21BE07D5F001B7618 /* AccessTwitterAccount.swift in Sources */,
 				B773F9E71BDEC224001B7618 /* Tweet.swift in Sources */,
+				B7B012B91BE1264F00EE7EB3 /* TwitterTimeline.swift in Sources */,
 				B773F9BB1BDEBF26001B7618 /* HomeViewController.swift in Sources */,
 				B773F9EF1BE012A4001B7618 /* User.swift in Sources */,
 				B773F9B91BDEBF26001B7618 /* AppDelegate.swift in Sources */,

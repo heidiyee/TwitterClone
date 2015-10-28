@@ -47,6 +47,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    func getAccount() {
+        AccessTwitterAccount.loginTwitter { (error, account) -> () in
+            if let error = error {
+                print(error); return
+            }
+            if let account = account {
+                TwitterTimeline.sharedService.accounts = account
+                self.getTweets()
+            }
+        }
+    }
     
     // MARK: UITableView
     
