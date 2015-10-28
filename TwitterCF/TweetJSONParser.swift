@@ -19,12 +19,18 @@ class TweetJSONParser {
                 var tweets = [Tweet]()
             
                 for tweetObject in rootObject {
-                    if let text = tweetObject["text"] as? String, id = tweetObject["id_str"] as? String, userDictionary = tweetObject["user"] {
-                        if let favorites = userDictionary["favourites_count"] as? Int {
-                            let tweet = Tweet(text: text, id: id, favorites: favorites, username: "Hello", profileImageURL: "Hello")
-                            tweets.append(tweet)
+                    
+                    if let text = tweetObject["text"] as? String, id = tweetObject["id_str"] as? String, userDictionary = tweetObject["user"] as? [String: AnyObject] {
+                        
+                        let tweet = Tweet(text: text, id: id)
+
+                        if let name = userDictionary["name"] as? String, profileImageUrl = userDictionary["profile_image_url"] as? String {
+                            
+                            tweet.user = User(name: name, profileImageUrl: profileImageUrl)
+                            
                         }
 
+                        tweets.append(tweet)
                     }
                 }
                 return tweets
@@ -34,10 +40,10 @@ class TweetJSONParser {
                 
         } catch _ {
         
+            return nil
         }
         
         return nil
     }
-    
     
 }

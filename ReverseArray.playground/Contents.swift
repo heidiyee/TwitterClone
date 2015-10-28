@@ -8,7 +8,7 @@ func reverseArray(var array: [AnyObject]) -> [AnyObject] {
     
     var newArray = [AnyObject]()
     
-    for _ in array {
+    for items in array {
         newArray.append(array.removeLast())
     }
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -30,8 +30,10 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     }
 
     func setupTableView() {
-        //self.tableView.delegate = self
+        self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        //self.getAccount()
     }
     
     func getTweets() {
@@ -60,7 +62,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         let tweet = self.tweets[indexPath.row]
         
         cell.textLabel?.text = tweet.text
-        cell.detailTextLabel?.text = "Tweet id: \(tweet.id) | Favorited: \(tweet.favorites)"
+        cell.detailTextLabel?.text = "Tweet id: \(tweet.id)"
         
         return cell
     }

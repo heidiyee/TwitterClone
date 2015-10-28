@@ -6,22 +6,18 @@
 //  Copyright © 2015 Heidi Yee. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Tweet {
     
     let text: String
     let id: String
-    let favorites: Int
-    let username: String
-    let profileImageURL: String
+    var user: User?
     
-    init(text: String, id: String, favorites: Int, username: String, profileImageURL: String) {
+    init(text: String, id: String, user: User? = nil) {
         self.text = text
         self.id = id
-        self.favorites = favorites
-        self.username = username
-        self.profileImageURL = profileImageURL
+        self.user = user
     }
     
 }
