@@ -29,9 +29,11 @@ class AccessTwitterAccount {
             completionHandler("ERROR: No twitter accounts were found on this device.", nil); return
                 
             }
+            completionHandler("No access to Twittter Accounts", nil); return
+            
         })
         
-        completionHandler("No access to Twittter Accounts", nil); return
+
         
     }
 

@@ -24,7 +24,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.setupTableView()
         self.getTweets()
         
-        print("Hi")
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,19 +34,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        //self.getAccount()
+        self.getAccount()
     }
     
-    func getTweets() {
-        if let tweetJSONFileUrl = NSBundle.mainBundle().URLForResource("tweet", withExtension: "json") {
-            if let tweetJSONData = NSData(contentsOfURL: tweetJSONFileUrl) {
-                if let tweets = TweetJSONParser.tweetFromJSONData(tweetJSONData) {
-                    self.tweets = tweets
-                    self.tableView.reloadData()
-                }
-            }
-        }
-    }
     
     func getAccount() {
         AccessTwitterAccount.loginTwitter { (error, account) -> () in
@@ -59,6 +48,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.getTweets()
             }
         }
+    }
+    
+    func getTweets() {
+        TwitterTimeline.getTweetTimeline { (error, tweets) -> () in
+            if let error = error {
+                print(error); return
+            }
+            if let tweets = tweets {
+                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                    self.tweets = tweets
+                    self.tableView.reloadData()
+                })
+            }
+        }
+        
     }
     
     // MARK: UITableView
