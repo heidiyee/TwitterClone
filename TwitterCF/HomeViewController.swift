@@ -23,6 +23,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         self.setupTableView()
         self.getTweets()
+        
+        print("Hi")
     }
 
     override func didReceiveMemoryWarning() {
