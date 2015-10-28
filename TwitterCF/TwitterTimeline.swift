@@ -44,4 +44,39 @@ class TwitterTimeline {
             }
         }
     }
+    
+    class func getAuthUser(completion: (String?, User?)-> ()) {
+        
+        let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: NSURL(string: "https://api.twitter.com/1.1/account/verify_credentials.json"), parameters: nil)
+        
+        if let accounts = self.sharedService.accounts {
+            request.account = accounts
+            
+            request.performRequestWithHandler { (data, response, error) -> Void in
+                
+                if let error = error {
+                    print(error)
+                    completion("ERROR: SLRequest type GET for /1.1/account/verify_credentials.json could not be completed.", nil); return
+                }
+                
+                switch response.statusCode {
+                case 200...299:
+                    do {
+                        if let userData = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String : AnyObject] {
+                            if let user = TweetJSONParser.userFromJSONData(userData){
+                                completion(nil, user); return
+                            }
+                            completion("ERROR: unable create user object from de-serialized JSON object", nil)
+                        }
+                    } catch {
+                        completion("ERROR: NSJSONSerialization.JSONObjectWithData was unable to de-serialize JSON object.", nil)
+                    }
+
+                default:
+                    completion("ERROR: SLRequest type GET for /1.1/account/verify_credentials.json returned status code \(response.statusCode) [unknown error].", nil)
+                }
+            }
+        }
+    }
+    
 }

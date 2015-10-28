@@ -45,7 +45,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             if let account = account {
                 TwitterTimeline.sharedService.accounts = account
-                self.getTweets()
+                self.authAccount()
             }
         }
     }
@@ -65,6 +65,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    func authAccount() {
+        TwitterTimeline.getAuthUser { (error, User) -> () in
+            if let error = error {
+                print(error); return
+            }
+            if let user = User {
+                TwitterTimeline.sharedService.user = user
+                self.getTweets()
+            }
+        }
+    }
+    
     // MARK: UITableView
     
 
@@ -79,7 +91,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let tweet = self.tweets[indexPath.row]
         
         cell.textLabel?.text = tweet.text
-        cell.detailTextLabel?.text = "Tweet posted by: \(tweet.user!.name))"
+        cell.detailTextLabel?.text = "Tweet posted by: \(tweet.user!.name)"
         
         return cell
     }

@@ -46,4 +46,11 @@ class TweetJSONParser {
         return nil
     }
     
+    class func userFromJSONData (userDictionary: [String: AnyObject]) -> User? {
+        if let name = userDictionary["name"] as? String, profileImageUrl = userDictionary["profile_image_url"] as? String {
+            return User(name: name, profileImageUrl: profileImageUrl)
+        }
+        return nil
+    }
+    
 }
