@@ -79,7 +79,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let tweet = self.tweets[indexPath.row]
         
         cell.textLabel?.text = tweet.text
-        cell.detailTextLabel?.text = "Tweet id: \(tweet.id)"
+        cell.detailTextLabel?.text = "Tweet posted by: \(tweet.user!.name))"
         
         return cell
     }
