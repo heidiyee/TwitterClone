@@ -22,7 +22,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTableView()
-        self.getTweets()
+        self.getAccount()
         
     }
 
@@ -34,9 +34,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        self.getAccount()
+        //... 
+        self.tableView.estimatedRowHeight = 2
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
     }
-    
+
     
     func getAccount() {
         AccessTwitterAccount.loginTwitter { (error, account) -> () in
@@ -46,6 +49,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let account = account {
                 TwitterTimeline.sharedService.accounts = account
                 self.authAccount()
+            }
+        }
+    }
+    
+    func authAccount() {
+        TwitterTimeline.getAuthUser { (error, User) -> () in
+            if let error = error {
+                print(error); return
+            }
+            if let user = User {
+                TwitterTimeline.sharedService.user = user
+                self.getTweets()
             }
         }
     }
@@ -64,18 +79,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
     }
-    
-    func authAccount() {
-        TwitterTimeline.getAuthUser { (error, User) -> () in
-            if let error = error {
-                print(error); return
-            }
-            if let user = User {
-                TwitterTimeline.sharedService.user = user
-                self.getTweets()
-            }
-        }
-    }
+
     
     // MARK: UITableView
     
@@ -90,10 +94,28 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let tweet = self.tweets[indexPath.row]
         
+        cell.textLabel?.numberOfLines = 0
+
+        
         cell.textLabel?.text = tweet.text
         cell.detailTextLabel?.text = "Tweet posted by: \(tweet.user!.name)"
         
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("hi")
+        if segue.identifier == "DetailViewController" {
+            print("hi")
+            if let listedViewController = segue.destinationViewController as? DetailViewController {
+
+                if let myIndexPath = self.tableView.indexPathForSelectedRow {
+                    let tweet = self.tweets[myIndexPath.row]
+                    listedViewController.tweet = tweet
+                    listedViewController.user = tweet.user
+                }
+            }
+        }
     }
 }
 
