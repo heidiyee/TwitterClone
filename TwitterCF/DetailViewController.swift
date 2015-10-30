@@ -11,8 +11,11 @@ import UIKit
 class DetailViewController: UIViewController {
     
     @IBOutlet weak var detailedTweet: UILabel!
+    @IBOutlet weak var tweetUser: UILabel!
+    @IBOutlet weak var userImage: UIButton!
+    
     var tweet: Tweet!
-    var user: User?
+
     
     class func identifier() -> String {
         return "DetailViewController"
@@ -21,10 +24,19 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.detailedTweet.text = self.tweet.text
         detailedTweet.preferredMaxLayoutWidth = 200
-        //detailedTweet.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        
+        self.tweetToDisplay()
+    }
+    
+    func tweetToDisplay() {
+        if tweet.retweetBool == true {
+            tweetUser.text = self.tweet.retweetUser?.name
+            detailedTweet.text = self.tweet.retweetText
+        } else {
+            tweetUser.text = self.tweet.user?.name
+            detailedTweet.text = self.tweet.text
+        }
     }
 
 }

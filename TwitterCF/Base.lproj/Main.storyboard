@@ -9,7 +9,6 @@
         <!--Twitter-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="HomeViewController" automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="HomeViewController" customModule="TwitterCF" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
@@ -67,6 +66,7 @@
                         <outlet property="tableView" destination="HOB-hT-uwW" id="sMf-Y8-d0n"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1593" y="105"/>
         </scene>
@@ -82,8 +82,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbp-Qr-9B9">
-                                <rect key="frame" x="279" y="200.5" width="42" height="200"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbp-Qr-9B9">
+                                <rect key="frame" x="277" y="200" width="46.5" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="NCK-E6-ici"/>
                                 </constraints>
@@ -91,15 +91,53 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXS-Xv-gVB">
+                                <rect key="frame" x="282" y="172" width="36.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Det-ba-TKK">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cbp-Qr-9B9" firstAttribute="centerY" secondItem="Zeb-eW-W7B" secondAttribute="centerY" id="6C1-r6-Q5x"/>
-                            <constraint firstItem="cbp-Qr-9B9" firstAttribute="centerX" secondItem="Zeb-eW-W7B" secondAttribute="centerX" id="VWd-TC-BdH"/>
+                            <constraint firstItem="Det-ba-TKK" firstAttribute="top" secondItem="cbp-Qr-9B9" secondAttribute="bottom" constant="8" id="C6Y-fw-uMn"/>
+                            <constraint firstItem="cbp-Qr-9B9" firstAttribute="centerX" secondItem="Zeb-eW-W7B" secondAttribute="centerX" id="KrX-ol-L1X"/>
+                            <constraint firstItem="yXS-Xv-gVB" firstAttribute="centerX" secondItem="Zeb-eW-W7B" secondAttribute="centerX" id="UUh-YZ-oI3"/>
+                            <constraint firstItem="Det-ba-TKK" firstAttribute="centerX" secondItem="Zeb-eW-W7B" secondAttribute="centerX" id="h8z-yj-GjI"/>
+                            <constraint firstItem="yXS-Xv-gVB" firstAttribute="top" secondItem="Exa-os-ZMb" secondAttribute="bottom" constant="8" id="lJ9-Qm-uWf"/>
+                            <constraint firstItem="cbp-Qr-9B9" firstAttribute="top" secondItem="yXS-Xv-gVB" secondAttribute="bottom" constant="8" id="wba-cG-HRH"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Det-ba-TKK"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="lJ9-Qm-uWf"/>
+                                <exclude reference="KrX-ol-L1X"/>
+                                <exclude reference="C6Y-fw-uMn"/>
+                                <exclude reference="h8z-yj-GjI"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="subviews">
+                                <include reference="Det-ba-TKK"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="lJ9-Qm-uWf"/>
+                                <include reference="KrX-ol-L1X"/>
+                                <include reference="C6Y-fw-uMn"/>
+                                <include reference="h8z-yj-GjI"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="detailedTweet" destination="cbp-Qr-9B9" id="CZo-c8-gxa"/>
+                        <outlet property="tweetUser" destination="yXS-Xv-gVB" id="7hb-VU-YLi"/>
+                        <outlet property="userImage" destination="Det-ba-TKK" id="IdZ-XO-Ruy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8V-pt-lCo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -109,7 +147,6 @@
         <!--Navigation Controller-->
         <scene sceneID="9oY-c6-s07">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4fw-On-BSM" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5dH-rH-jEW" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DoQ-Wj-8cx">
@@ -121,6 +158,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Qdi-kb-GQo"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4fw-On-BSM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="781" y="105"/>
         </scene>

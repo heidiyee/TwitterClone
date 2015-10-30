@@ -12,17 +12,20 @@ class Tweet {
     
     let text: String
     let id: String
-    var retweeted: Bool
-    let retweetId: String
     var user: User?
+    var retweetText: String?
+    var retweetUser: User?
+    var retweetBool: Bool?
     
     
-    init(text: String, id: String, retweeted: Bool, retweetId: String, user: User? = nil) {
+    init(text: String, id: String, user: User? = nil, retweetText: String? = nil, retweetUser: User? = nil, retweetBool: Bool? = nil) {
         self.text = text
         self.id = id
-        self.retweeted = false
-        self.retweetId = retweetId
         self.user = user
+        self.retweetText = retweetText
+        self.retweetUser = retweetUser
+        self.retweetBool = retweetBool
+
         
     }
     

@@ -39,6 +39,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
     }
+    
+    //Logging in to Twitter, verifying account, getting timeline tweets of that account
 
     
     func getAccount() {
@@ -91,7 +93,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("tweetCell", forIndexPath: indexPath)
-        
         let tweet = self.tweets[indexPath.row]
         
         cell.textLabel?.numberOfLines = 0
@@ -100,19 +101,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.textLabel?.text = tweet.text
         cell.detailTextLabel?.text = "Tweet posted by: \(tweet.user!.name)"
         
+        //image queue
+        
         return cell
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("hi")
+        
         if segue.identifier == "DetailViewController" {
-            print("hi")
+            
             if let listedViewController = segue.destinationViewController as? DetailViewController {
 
                 if let myIndexPath = self.tableView.indexPathForSelectedRow {
+                    
                     let tweet = self.tweets[myIndexPath.row]
                     listedViewController.tweet = tweet
-                    listedViewController.user = tweet.user
                 }
             }
         }
