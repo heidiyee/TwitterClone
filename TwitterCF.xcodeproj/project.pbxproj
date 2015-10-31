@@ -21,8 +21,9 @@
 		B773F9F21BE07D5F001B7618 /* AccessTwitterAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773F9F11BE07D5F001B7618 /* AccessTwitterAccount.swift */; };
 		B792C1DF1BE1A362003DED07 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B792C1DE1BE1A362003DED07 /* DetailViewController.swift */; };
 		B792C1E41BE2C220003DED07 /* CustomTweetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B792C1E31BE2C220003DED07 /* CustomTweetCell.xib */; };
-		B792C1E61BE2C2EF003DED07 /* CustomTweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B792C1E51BE2C2EF003DED07 /* CustomTweetTableViewCell.swift */; };
 		B7B012B91BE1264F00EE7EB3 /* TwitterTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B012B81BE1264F00EE7EB3 /* TwitterTimeline.swift */; };
+		B7E9ED451BE3D018001FC8FA /* CustomTweetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E9ED441BE3D018001FC8FA /* CustomTweetViewCell.swift */; };
+		B7E9ED471BE40568001FC8FA /* UserTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E9ED461BE40568001FC8FA /* UserTimelineViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,8 +64,9 @@
 		B773F9F11BE07D5F001B7618 /* AccessTwitterAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTwitterAccount.swift; sourceTree = "<group>"; };
 		B792C1DE1BE1A362003DED07 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B792C1E31BE2C220003DED07 /* CustomTweetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTweetCell.xib; sourceTree = "<group>"; };
-		B792C1E51BE2C2EF003DED07 /* CustomTweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTweetTableViewCell.swift; sourceTree = "<group>"; };
 		B7B012B81BE1264F00EE7EB3 /* TwitterTimeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterTimeline.swift; sourceTree = "<group>"; };
+		B7E9ED441BE3D018001FC8FA /* CustomTweetViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTweetViewCell.swift; sourceTree = "<group>"; };
+		B7E9ED461BE40568001FC8FA /* UserTimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTimelineViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			children = (
 				B773F9BA1BDEBF26001B7618 /* HomeViewController.swift */,
 				B792C1DE1BE1A362003DED07 /* DetailViewController.swift */,
+				B7E9ED461BE40568001FC8FA /* UserTimelineViewController.swift */,
 				B7B012B81BE1264F00EE7EB3 /* TwitterTimeline.swift */,
 				B773F9F11BE07D5F001B7618 /* AccessTwitterAccount.swift */,
 			);
@@ -170,8 +173,8 @@
 		B792C1E71BE2C2FA003DED07 /* Custom Cell */ = {
 			isa = PBXGroup;
 			children = (
-				B792C1E51BE2C2EF003DED07 /* CustomTweetTableViewCell.swift */,
 				B792C1E31BE2C220003DED07 /* CustomTweetCell.xib */,
+				B7E9ED441BE3D018001FC8FA /* CustomTweetViewCell.swift */,
 			);
 			name = "Custom Cell";
 			sourceTree = "<group>";
@@ -310,10 +313,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B792C1E61BE2C2EF003DED07 /* CustomTweetTableViewCell.swift in Sources */,
 				B773F9E91BDEC2F2001B7618 /* TweetJSONParser.swift in Sources */,
 				B773F9F21BE07D5F001B7618 /* AccessTwitterAccount.swift in Sources */,
+				B7E9ED471BE40568001FC8FA /* UserTimelineViewController.swift in Sources */,
 				B773F9E71BDEC224001B7618 /* Tweet.swift in Sources */,
+				B7E9ED451BE3D018001FC8FA /* CustomTweetViewCell.swift in Sources */,
 				B7B012B91BE1264F00EE7EB3 /* TwitterTimeline.swift in Sources */,
 				B773F9BB1BDEBF26001B7618 /* HomeViewController.swift in Sources */,
 				B773F9EF1BE012A4001B7618 /* User.swift in Sources */,

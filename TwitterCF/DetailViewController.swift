@@ -15,6 +15,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var userImage: UIButton!
     
     var tweet: Tweet!
+    
 
     
     class func identifier() -> String {
@@ -24,9 +25,10 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        detailedTweet.preferredMaxLayoutWidth = 200
+
         
         self.tweetToDisplay()
+        self.getImage()
     }
     
     func tweetToDisplay() {
@@ -37,6 +39,34 @@ class DetailViewController: UIViewController {
             tweetUser.text = self.tweet.user?.name
             detailedTweet.text = self.tweet.text
         }
+        detailedTweet.preferredMaxLayoutWidth = 200
     }
+    
+    func getImage () {
+        if let user = tweet.user {
+            if let url = NSURL(string: user.profileImageUrl) {
+                print(url)
+            
+                let imageData = NSData(contentsOfURL: url)!
+                let image = UIImage(data: imageData)
+                //tweet.user?.userImage = image
+                userImage.setBackgroundImage(image, forState: .Normal)
+                
+            }
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    
+        if segue.identifier == "UserTimelineViewControllerSegue" {
+
+            if let listedViewController = segue.destinationViewController as? UserTimelineViewController {
+                
+                listedViewController.tweet = self.tweet
+
+            }
+        }
+    }
+
 
 }

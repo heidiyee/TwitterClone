@@ -45,9 +45,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="AgU-MY-Z0n" kind="show" identifier="DetailViewController" id="oXo-gp-Hzs"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -97,52 +94,134 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Det-ba-TKK">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLI-MZ-onm">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="4Dv-q6-gn2"/>
+                                    <constraint firstAttribute="height" constant="100" id="wzf-jX-yEE"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="4Dv-q6-gn2"/>
+                                        <exclude reference="wzf-jX-yEE"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="4Dv-q6-gn2"/>
+                                        <include reference="wzf-jX-yEE"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="xtZ-pv-okG" kind="show" identifier="UserTimelineViewControllerSegue" id="dsY-94-FPX"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Det-ba-TKK" firstAttribute="top" secondItem="cbp-Qr-9B9" secondAttribute="bottom" constant="8" id="C6Y-fw-uMn"/>
                             <constraint firstItem="cbp-Qr-9B9" firstAttribute="centerX" secondItem="Zeb-eW-W7B" secondAttribute="centerX" id="KrX-ol-L1X"/>
+                            <constraint firstItem="dLI-MZ-onm" firstAttribute="top" secondItem="cbp-Qr-9B9" secondAttribute="bottom" constant="8" id="PeA-jH-CeQ"/>
+                            <constraint firstItem="dLI-MZ-onm" firstAttribute="centerX" secondItem="Zeb-eW-W7B" secondAttribute="centerX" id="TJI-bs-H8b"/>
                             <constraint firstItem="yXS-Xv-gVB" firstAttribute="centerX" secondItem="Zeb-eW-W7B" secondAttribute="centerX" id="UUh-YZ-oI3"/>
-                            <constraint firstItem="Det-ba-TKK" firstAttribute="centerX" secondItem="Zeb-eW-W7B" secondAttribute="centerX" id="h8z-yj-GjI"/>
                             <constraint firstItem="yXS-Xv-gVB" firstAttribute="top" secondItem="Exa-os-ZMb" secondAttribute="bottom" constant="8" id="lJ9-Qm-uWf"/>
                             <constraint firstItem="cbp-Qr-9B9" firstAttribute="top" secondItem="yXS-Xv-gVB" secondAttribute="bottom" constant="8" id="wba-cG-HRH"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="Det-ba-TKK"/>
+                                <exclude reference="dLI-MZ-onm"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="lJ9-Qm-uWf"/>
                                 <exclude reference="KrX-ol-L1X"/>
-                                <exclude reference="C6Y-fw-uMn"/>
-                                <exclude reference="h8z-yj-GjI"/>
+                                <exclude reference="lJ9-Qm-uWf"/>
+                                <exclude reference="PeA-jH-CeQ"/>
+                                <exclude reference="TJI-bs-H8b"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
                             <mask key="subviews">
-                                <include reference="Det-ba-TKK"/>
+                                <include reference="dLI-MZ-onm"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="lJ9-Qm-uWf"/>
                                 <include reference="KrX-ol-L1X"/>
-                                <include reference="C6Y-fw-uMn"/>
-                                <include reference="h8z-yj-GjI"/>
+                                <include reference="lJ9-Qm-uWf"/>
+                                <include reference="PeA-jH-CeQ"/>
+                                <include reference="TJI-bs-H8b"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="detailedTweet" destination="cbp-Qr-9B9" id="CZo-c8-gxa"/>
                         <outlet property="tweetUser" destination="yXS-Xv-gVB" id="7hb-VU-YLi"/>
-                        <outlet property="userImage" destination="Det-ba-TKK" id="IdZ-XO-Ruy"/>
+                        <outlet property="userImage" destination="dLI-MZ-onm" id="Wg8-4n-YzY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8V-pt-lCo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1593" y="886"/>
+        </scene>
+        <!--User Timeline View Controller-->
+        <scene sceneID="aBd-aa-R8Y">
+            <objects>
+                <viewController storyboardIdentifier="UserTimelineViewController" id="xtZ-pv-okG" customClass="UserTimelineViewController" customModule="TwitterCF" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dSL-6E-Vf6"/>
+                        <viewControllerLayoutGuide type="bottom" id="glJ-qR-2qD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Cfe-mc-rBn">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NLM-X7-uar">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="statusCell" id="aKQ-Xz-TUT" customClass="CustomTweetViewCell" customModule="TwitterCF" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aKQ-Xz-TUT" id="rVL-1d-yMi">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="glJ-qR-2qD" firstAttribute="top" secondItem="NLM-X7-uar" secondAttribute="bottom" id="Sig-R2-13E"/>
+                            <constraint firstItem="NLM-X7-uar" firstAttribute="leading" secondItem="Cfe-mc-rBn" secondAttribute="leadingMargin" id="WIu-Yg-AIN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NLM-X7-uar" secondAttribute="trailing" id="csZ-uK-LZu"/>
+                            <constraint firstItem="NLM-X7-uar" firstAttribute="top" secondItem="dSL-6E-Vf6" secondAttribute="bottom" id="rX3-gT-dmv"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="NLM-X7-uar"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="WIu-Yg-AIN"/>
+                                <exclude reference="csZ-uK-LZu"/>
+                                <exclude reference="rX3-gT-dmv"/>
+                                <exclude reference="Sig-R2-13E"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="subviews">
+                                <include reference="NLM-X7-uar"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="WIu-Yg-AIN"/>
+                                <include reference="csZ-uK-LZu"/>
+                                <include reference="rX3-gT-dmv"/>
+                                <include reference="Sig-R2-13E"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B6n-ke-03W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2431" y="885.75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9oY-c6-s07">

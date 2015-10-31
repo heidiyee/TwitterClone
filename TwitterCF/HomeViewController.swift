@@ -38,6 +38,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.estimatedRowHeight = 2
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
+        let customTweetCellXib = UINib(nibName: "CustomTweetCell", bundle: NSBundle.mainBundle())
+        self.tableView.registerNib(customTweetCellXib, forCellReuseIdentifier: CustomTweetViewCell.identifier())
+        
     }
     
     //Logging in to Twitter, verifying account, getting timeline tweets of that account
@@ -92,33 +95,36 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("tweetCell", forIndexPath: indexPath)
-        let tweet = self.tweets[indexPath.row]
-        
-        cell.textLabel?.numberOfLines = 0
-
-        
-        cell.textLabel?.text = tweet.text
-        cell.detailTextLabel?.text = "Tweet posted by: \(tweet.user!.name)"
-        
-        //image queue
+        let cell = tableView.dequeueReusableCellWithIdentifier(CustomTweetViewCell.identifier(), forIndexPath: indexPath) as! CustomTweetViewCell
+        cell.tweet = self.tweets[indexPath.row]
+    
         
         return cell
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if segue.identifier == "DetailViewController" {
-            
-            if let listedViewController = segue.destinationViewController as? DetailViewController {
-
-                if let myIndexPath = self.tableView.indexPathForSelectedRow {
-                    
-                    let tweet = self.tweets[myIndexPath.row]
-                    listedViewController.tweet = tweet
-                }
-            }
-        }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    
+        let detailedViewController = self.storyboard?.instantiateViewControllerWithIdentifier(DetailViewController.identifier()) as! DetailViewController
+        detailedViewController.tweet = self.tweets[indexPath.row]
+        self.navigationController?.pushViewController(detailedViewController, animated: true)
+    
     }
+    
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        
+//        if segue.identifier == "DetailViewController" {
+//            
+//            if let listedViewController = segue.destinationViewController as? DetailViewController {
+//
+//                if let myIndexPath = self.tableView.indexPathForSelectedRow {
+//                    
+//                    let tweet = self.tweets[myIndexPath.row]
+//                    listedViewController.tweet = tweet
+//                }
+//            }
+//        }
+//    }
+    
+    
 }
 

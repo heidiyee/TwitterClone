@@ -45,6 +45,39 @@ class TwitterTimeline {
         }
     }
     
+    class func getUserStatusWithUserName (userName: String, completion: (String?, [Tweet]?) -> ()) {
+        
+        var parameters = [String:AnyObject]()
+        parameters["screen_name"] = userName
+        
+        let requestStatus = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: NSURL(string: "https://api.twitter.com/1.1/statuses/user_timeline.json?"), parameters: parameters)
+    
+        
+        if let account = sharedService.accounts {
+            requestStatus.account = account
+            
+            requestStatus.performRequestWithHandler { (data, response, error) -> Void in
+                
+                if let error = error {
+                    print(error.description)
+                    completion("ERROR: SLRequest type GET for /1.1/statuses/home_timeline.json could not be completed.", nil); return
+                }
+                print(response.description)
+                
+                switch response.statusCode {
+                case 200...299:
+                    let tweets = TweetJSONParser.tweetFromJSONData(data)
+                    completion(nil, tweets)
+                default:
+                    completion("ERROR: SLRequest type GET for /1.1/statuses/home_timeline.json returned status code \(response.statusCode) [unknown error].", nil)
+                }
+                
+            }
+        }
+
+        
+    }
+    
     class func getAuthUser(completion: (String?, User?)-> ()) {
         
         let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: NSURL(string: "https://api.twitter.com/1.1/account/verify_credentials.json"), parameters: nil)
