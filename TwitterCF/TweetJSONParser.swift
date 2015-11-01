@@ -40,9 +40,10 @@ class TweetJSONParser {
                         } else {
                         
                             let tweet = Tweet(text: text, id: id, retweetBool: false)
-                            if let name = userDictionary["name"] as? String, profileImageUrl = userDictionary["profile_image_url"] as? String {
-                            
-                                tweet.user = User(name: name, profileImageUrl: profileImageUrl)
+                            if let name = userDictionary["name"] as? String, profileImageUrl = userDictionary["profile_image_url"] as? String, screenName = userDictionary["screen_name"] as? String {
+                                
+                                let largerImage = profileImageUrl.stringByReplacingOccurrencesOfString("normal", withString: "bigger")
+                                tweet.user = User(name: name, profileImageUrl: largerImage, screenName: screenName)
                         
                             }
                             tweets.append(tweet)
@@ -63,8 +64,10 @@ class TweetJSONParser {
     }
     
     class func userFromJSONData (userDictionary: [String: AnyObject]) -> User? {
-        if let name = userDictionary["name"] as? String, profileImageUrl = userDictionary["profile_image_url"] as? String {
-            return User(name: name, profileImageUrl: profileImageUrl)
+        if let name = userDictionary["name"] as? String, profileImageUrl = userDictionary["profile_image_url"] as? String, screenName = userDictionary["screen_name"] as? String {
+            
+            let largerImage = profileImageUrl.stringByReplacingOccurrencesOfString("normal", withString: "bigger")
+            return User(name: name, profileImageUrl: largerImage, screenName: screenName)
         }
         return nil
     }

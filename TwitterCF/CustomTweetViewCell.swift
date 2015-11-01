@@ -12,11 +12,15 @@ class CustomTweetViewCell: UITableViewCell {
     
     @IBOutlet weak var twitterText: UILabel!
     @IBOutlet weak var twitterImage: UIImageView!
-    
+    @IBOutlet weak var userName: UILabel!
+
     var tweet: Tweet! {
         didSet {
             
             twitterText.text = tweet.text
+            userName.text = tweet.user?.name
+            userName.font = UIFont.boldSystemFontOfSize(16)
+            
             
             if let user = tweet.user {
                 if let url = NSURL(string: user.profileImageUrl) {

@@ -45,13 +45,13 @@ class TwitterTimeline {
         }
     }
     
-    class func getUserStatusWithUserName (userName: String, completion: (String?, [Tweet]?) -> ()) {
+    class func getUserStatusFromScreenName(screenName: String, completion: (String?, [Tweet]?) -> () ) {
         
-        var parameters = [String:AnyObject]()
-        parameters["screen_name"] = userName
+        var parameters = [String: AnyObject]()
+        parameters["screen_name"] = screenName
+        print(parameters)
         
-        let requestStatus = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: NSURL(string: "https://api.twitter.com/1.1/statuses/user_timeline.json?"), parameters: parameters)
-    
+        let requestStatus = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: NSURL(string: "https://api.twitter.com/1.1/statuses/user_timeline.json"), parameters: parameters)
         
         if let account = sharedService.accounts {
             requestStatus.account = account
@@ -71,12 +71,11 @@ class TwitterTimeline {
                 default:
                     completion("ERROR: SLRequest type GET for /1.1/statuses/home_timeline.json returned status code \(response.statusCode) [unknown error].", nil)
                 }
-                
             }
         }
-
-        
     }
+
+    
     
     class func getAuthUser(completion: (String?, User?)-> ()) {
         
