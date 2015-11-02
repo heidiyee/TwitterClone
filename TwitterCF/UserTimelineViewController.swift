@@ -33,12 +33,15 @@ class UserTimelineViewController: UIViewController, UITableViewDelegate, UITable
         self.tableView.estimatedRowHeight = 2
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
         let customTweetCellXib = UINib(nibName: "CustomTweetCell", bundle: NSBundle.mainBundle())
         self.tableView.registerNib(customTweetCellXib, forCellReuseIdentifier: CustomTweetViewCell.identifier())
 
+        let customHeaderCellXib = UINib(nibName: "CustomHeaderCell", bundle: NSBundle.mainBundle())
+        self.tableView.registerNib(customHeaderCellXib, forCellReuseIdentifier: CustomHeaderCell.identifier())
     }
     
     func getStatus() {
@@ -78,6 +81,16 @@ class UserTimelineViewController: UIViewController, UITableViewDelegate, UITable
         detailedViewController.tweet = self.statusTweets[indexPath.row]
         self.navigationController?.pushViewController(detailedViewController, animated: true)
         
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerCell = tableView.dequeueReusableCellWithIdentifier(CustomHeaderCell.identifier()) as! CustomHeaderCell
+        headerCell.tweet = self.tweet
+        return headerCell
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 100
     }
 
 }
