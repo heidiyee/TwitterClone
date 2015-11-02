@@ -10,12 +10,23 @@ import UIKit
 
 class CustomHeaderCell: UITableViewCell {
     
+    @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userScreenName: UILabel!
     
     var tweet: Tweet! {
         didSet {
             if let user = tweet.user {
                 userName.text = user.name
+                userScreenName.text = "@\(user.screenName)"
+                if let url = NSURL(string: user.profileImageUrl) {
+                    print(url)
+                    
+                    let imageData = NSData(contentsOfURL: url)!
+                    let image = UIImage(data: imageData)
+                    userImage.image = image
+                }
+
             }
         }
     }

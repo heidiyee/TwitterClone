@@ -90,7 +90,7 @@ class UserTimelineViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
+        return 150
     }
 
 }
